@@ -7,6 +7,7 @@ import ContributorsModal from './ContributorsModal'
 export default function Header() {
   const [isDark, setIsDark] = useState(false)
   const [showContributors, setShowContributors] = useState(false)
+  const [showToolsMenu, setShowToolsMenu] = useState(false)
 
   const toggleDarkMode = () => {
     document.documentElement.classList.toggle('dark')
@@ -35,17 +36,17 @@ export default function Header() {
         </button>
       </header>
 
-      <nav className="bg-surface-light dark:bg-surface-dark border-b border-slate-200 dark:border-slate-700 p-2 flex overflow-x-auto space-x-1 shrink-0">
+      <nav className="bg-surface-light dark:bg-surface-dark border-b border-slate-200 dark:border-slate-700 p-2 flex space-x-1 shrink-0 relative z-50 overflow-visible">
         <Link 
           href="/"
-          className="flex items-center space-x-1 px-3 py-1.5 rounded bg-primary/10 text-primary dark:text-primary-light font-medium text-sm transition-colors"
+          className="flex items-center space-x-1 px-3 py-1.5 rounded bg-primary/10 text-primary dark:text-primary-light font-medium text-sm transition-colors whitespace-nowrap"
         >
           <span className="material-icons-outlined text-lg">list</span>
           <span>Lista</span>
         </Link>
         <Link
           href="/apps"
-          className="flex items-center space-x-1 px-3 py-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-600 dark:text-slate-300 transition-colors"
+          className="flex items-center space-x-1 px-3 py-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-600 dark:text-slate-300 transition-colors whitespace-nowrap"
         >
           <span className="material-icons-outlined text-blue-500 text-lg">apps</span>
           <span>Aplicaciones interesantes</span>
@@ -53,11 +54,41 @@ export default function Header() {
         <div className="w-px h-6 bg-slate-300 dark:bg-slate-600 mx-2 self-center"></div>
         <button 
           onClick={() => setShowContributors(true)}
-          className="flex items-center space-x-1 px-3 py-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-600 dark:text-slate-300 transition-colors"
+          className="flex items-center space-x-1 px-3 py-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-600 dark:text-slate-300 transition-colors whitespace-nowrap"
         >
           <span className="material-icons-outlined text-purple-500 text-lg">people</span>
           <span>Colaboradores</span>
         </button>
+        
+        <div className="relative z-[200]">
+          <button
+            onClick={() => setShowToolsMenu(!showToolsMenu)}
+            className="flex items-center space-x-1 px-3 py-1.5 rounded hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-600 dark:text-slate-300 transition-colors whitespace-nowrap"
+          >
+            <span className="material-icons-outlined text-orange-500 text-lg">build</span>
+            <span>Herramientas</span>
+            <span className="material-icons-outlined text-xs">{showToolsMenu ? 'expand_less' : 'expand_more'}</span>
+          </button>
+          
+          {showToolsMenu && (
+            <>
+              <div 
+                className="fixed inset-0 z-[150]" 
+                onClick={() => setShowToolsMenu(false)}
+              />
+              <div className="absolute top-full left-0 mt-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg shadow-2xl py-1 min-w-[200px] z-[200]">
+                <Link
+                  href="/tools/icon-builder"
+                  onClick={() => setShowToolsMenu(false)}
+                  className="flex items-center space-x-2 px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                >
+                  <span className="material-icons-outlined text-sm text-orange-500">palette</span>
+                  <span className="text-sm text-slate-700 dark:text-slate-300">Icon Builder</span>
+                </Link>
+              </div>
+            </>
+          )}
+        </div>
       </nav>
 
       <ContributorsModal isOpen={showContributors} onClose={() => setShowContributors(false)} />

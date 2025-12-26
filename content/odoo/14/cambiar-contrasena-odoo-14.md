@@ -5,7 +5,7 @@ version: "17"
 module: "Base"
 difficulty: "Intermedio"
 icon: "code"
-iconColor: "purple"
+iconColor: "black"
 date: "2025-12-26"
 ---
 

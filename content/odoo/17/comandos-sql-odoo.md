@@ -5,7 +5,7 @@ version: "17"
 module: "Base"
 difficulty: "Intermedio"
 icon: "code"
-iconColor: "purple"
+iconColor: "black"
 date: "2025-12-26"
 ---
 
@@ -91,7 +91,8 @@ psql
 \c db10-chile-sii
 DELETE FROM account_payment WHERE state = 'draft';
 ```
-# Borrar Cola
+
+# Borrar Tabla
 ```
 sudo su - postgres
 psql
