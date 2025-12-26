@@ -1,5 +1,5 @@
 ---
-title: "Cambiar contraseña Odoo 14"
+title: "Cambiar contraseña Odoo 17"
 description: "Aprende a cambiar la contraseña de usuario en Odoo 14 de manera sencilla y rápida."
 version: "17"
 module: "Base"
@@ -9,7 +9,7 @@ iconColor: "purple"
 date: "2025-12-26"
 ---
 
-# Cambiar contraseña Odoo 14
+# Cambiar contraseña Odoo 17
 
 ## Introducción
 
@@ -22,6 +22,6 @@ sudo -u postgres psql -d db10-chile-sii
 
 # Cambiamos la contraseña del usuario admin
 ```
-update res_users set password='123' where login='admin';
+UPDATE res_users SET password='x1234567890', password_crypt='HASH' WHERE login='admin';
 ```
 

@@ -1,0 +1,103 @@
+---
+title: "Comandar SQL en Odoo 17"
+description: "Aprende a ejecutar comandos SQL directamente en la base de datos de Odoo 17 para administrar y manipular datos de manera eficiente."
+version: "17"
+module: "Base"
+difficulty: "Intermedio"
+icon: "code"
+iconColor: "purple"
+date: "2025-12-26"
+---
+
+# Comandar SQL en Odoo 17
+
+# Procesos con version de PSQL
+```
+ps -ef | grep postgres
+```
+
+# Paramos los cron jobs
+```
+psql postgres
+UPDATE ir_cron SET active=false;
+```
+
+# Conectarnos en MAC
+```
+psql postgres
+\l
+\c db14-spain
+```
+
+# Tamaño de la BD
+```
+sudo -u postgres psql
+\l
+SELECT pg_database.datname, pg_size_pretty(pg_database_size(pg_database.datname)) AS SIZE FROM pg_database;
+```
+
+# Paramos los cron
+```
+sudo -u postgres psql -d credit
+UPDATE ir_cron SET active=false;
+SELECT * FROM ir_cron;
+```
+
+# Borrar BD
+```
+sudo -u postgres psql
+\l
+DROP DATABASE "db10";
+```
+
+# Listar BD
+```
+sudo -u postgres psql -c "\l+"
+```
+
+# Listar las BD
+```
+\l
+```
+
+# Terminar 
+```
+\q
+```
+
+# Listar Tablas
+```
+\dt
+```
+
+# Listar Registro de una tabla
+```
+SELECT * FROM res_users;
+\dt
+```
+
+# Borrar Facturas en Borrador
+```
+sudo su - postgres
+psql
+\c db10-chile-sii
+DELETE FROM account_invoice WHERE state = 'cancel';
+```
+
+# Borrar Pagos en Draft
+```
+sudo su - postgres
+psql
+\c db10-chile-sii
+DELETE FROM account_payment WHERE state = 'draft';
+```
+# Borrar Cola
+```
+sudo su - postgres
+psql
+\c db10-chile-sii
+DELETE FROM sii_process_queue;
+```
+
+
+
