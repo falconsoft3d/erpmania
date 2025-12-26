@@ -10,11 +10,11 @@ export interface Contributor {
 
 export const contributors: Contributor[] = [
   {
-    name: "Tu Nombre",
+    name: "Marlon Falcón Hernández",
     role: "Fundador & Desarrollador Principal",
-    contributions: 150,
-    github: "tu-usuario",
-    linkedin: "tu-perfil",
+    contributions: 1,
+    github: "falconsoft3d",
+    linkedin: "marlon-falcón-3a2aa9a4",
   },
   // Agrega más colaboradores aquí
 ]
