@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 20px;
+  }
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #475569;
+  }
+}
+
+/* Estilos para código en markdown */
+.prose pre {
+  @apply bg-slate-800 dark:bg-slate-900;
+}
+
+.prose code {
+  @apply text-sm;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  @apply text-slate-900 dark:text-slate-100;
+}
+
+.prose p {
+  @apply text-slate-700 dark:text-slate-300;
+}
+
+.prose a {
+  @apply text-primary hover:text-primary-light;
+}
